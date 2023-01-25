@@ -17,12 +17,14 @@ takeoff_data = pd.DataFrame(columns=["t", "X", "Z", "Pitch", "alpha", "gamma", "
                                      "W", "D", "F_f", "R_NW", "R_LG", "M_pitch", "M_W", "M_L", "M_P", "M_T", "M_NW",
                                      "T"])
 
+########################################################
+################# PARAMETERS TO CHANGE #################
+
 # Aerodynamic conditions
 rho = 1.225  # Kg/m^3
 
 # Aircraft Config
 mass = 70e3  # Kg
-W = mass * -9.81  # N
 
 # Fuselage
 R_fuselage = 4
@@ -30,7 +32,6 @@ L_fuselage = 40
 
 # Take-off Thrust
 TWR = 0.3
-T_TO = TWR * mass * 9.81  # N
 
 # Wing
 S_wing = 152  # m^2
@@ -73,8 +74,15 @@ dt = 0.01  # s
 V_one = 40  # m/s
 V_r = 60  # m/s
 
+################# DO NOT MODIFY CODE BELOW #################
+############################################################
+
 
 def main() -> None:
+    # Simulation Constants
+    T_TO = TWR * mass * 9.81  # N
+    W = mass * -9.81  # N
+
     # Simulation variables
     t = 0
     X, Z = 0, 0
